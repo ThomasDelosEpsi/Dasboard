@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Personnel de Priorités</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="app-header">
+  <div class="app-header__content">
+    <div>
+      <h1>Dashboard Personnel de Priorités</h1>
+      <p>Suivi de tes tâches, journal de la journée, chrono de focus et génération automatique de mail.</p>
+    </div>
+    <span class="tag-today" id="todayLabel"></span>
+  </div>
+</header>
+
+<main class="app-main">
+  <!-- Ligne 1 : Tâches + Journal -->
+  <div class="grid grid-top">
+    <!-- Tâches -->
+    <section class="card" id="tasksCard">
+      <h2>Tâches du jour</h2>
+      <p class="muted">Ajoute tes tâches, marque-les comme faites et garde une vue claire de tes priorités.</p>
+
+      <div class="row">
+        <input
+          type="text"
+          id="taskTitle"
+          placeholder="Nouvelle tâche (ex : Finaliser le compte-rendu client)" />
+      </div>
+      <div class="row">
+        <select id="taskPriority" class="field-small">
+          <option value="Important">Important</option>
+          <option value="Urgent">Urgent</option>
+          <option value="Normal" selected>Normal</option>
+          <option value="Faible">Faible</option>
+        </select>
+        <input
+          type="text"
+          id="taskProject"
+          placeholder="Projet / contexte (optionnel)" />
+        <button class="primary" id="addTaskBtn">Ajouter</button>
+      </div>
+
+      <div class="task-list" id="taskList"></div>
+    </section>
+
+    <!-- Journal -->
+    <section class="card" id="journalCard">
+      <h2>Journal de la journée</h2>
+      <p class="muted">Note rapidement ce qui s’est passé (réunions, imprévus, décisions…).</p>
+
+      <textarea
+        id="journalInput"
+        placeholder="Ex : Réunion avec l’équipe X, décision prise sur le planning Y."></textarea>
+
+      <div class="toolbar">
+        <button class="secondary" id="addJournalBtn">Ajouter au journal</button>
+        <span class="muted small">Ctrl+Entrée pour ajouter rapidement.</span>
+      </div>
+
+      <div class="journal-list" id="journalList"></div>
+    </section>
+  </div>
+
+  <!-- Ligne 2 : Mail + Chrono -->
+  <div class="grid grid-bottom">
+    <!-- Mail récap -->
+    <section class="card" id="mailCard">
+      <h2>Génération du mail de compte-rendu</h2>
+      <p class="muted">
+        Récap de ce que tu as fait / de ce qui s’est passé. Tu peux générer un texte classique
+        ou demander une reformulation par IA (si l’API est configurée dans <code>app.js</code>).
+      </p>
+
+      <div class="mail-toolbar">
+        <button class="primary" id="generateMailBtn">Générer le mail</button>
+
+        <label class="checkbox-inline">
+          <input type="checkbox" id="useAiCheckbox" />
+          Utiliser l’IA (si configurée)
+        </label>
+
+        <button class="secondary" id="openMailClientBtn" disabled>
+          Ouvrir dans le client mail
+        </button>
+      </div>
+      <p class="muted small">
+        Pour l’IA : renseigne <code>OPENAI_API_KEY</code> dans <code>app.js</code>. Sans ça, le texte sera généré en mode classique.
+      </p>
+
+      <h3>Aperçu du mail</h3>
+      <textarea id="mailPreview" readonly></textarea>
+    </section>
+
+    <!-- Chrono -->
+    <section class="card" id="timerCard">
+      <h2>Chrono focus</h2>
+      <p class="muted">
+        Lance un bloc de concentration (type Pomodoro). Le chrono tourne en local, rien n’est envoyé.
+      </p>
+
+      <div class="timer-settings">
+        <label for="timerMinutes">Durée (min)</label>
+        <input type="number" id="timerMinutes" min="1" max="180" value="25" />
+      </div>
+
+      <div class="timer-display" id="timerDisplay">25:00</div>
+
+      <div class="timer-actions">
+        <button class="primary" id="startPauseTimerBtn">Démarrer</button>
+        <button class="secondary" id="resetTimerBtn">Réinitialiser</button>
+      </div>
+
+      <p class="muted small" id="timerStatus">Prêt.</p>
+    </section>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+/* Layout global */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f4f8;
+  color: #111827;
+}
+
+/* Header */
+.app-header {
+  background: #1f4f8f;
+  color: white;
+  padding: 16px 24px;
+}
+
+.app-header__content {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.app-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Main */
+.app-main {
+  max-width: 1180px;
+  margin: 24px auto;
+  padding: 0 16px 24px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.grid-top {
+  grid-template-columns: 2fr 1.4fr;
+  margin-bottom: 16px;
+}
+
+.grid-bottom {
+  grid-template-columns: 2.1fr 1fr;
+}
+
+@media (max-width: 900px) {
+  .grid-top,
+  .grid-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+/* Texte utilitaire */
+.muted {
+  color: #6b7280;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.tag-today {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #ecfdf3;
+  color: #166534;
+}
+
+/* Inputs */
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  flex: 1;
+  min-width: 0;
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.field-small {
+  flex: 0 0 160px;
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+button.primary {
+  background: #1f4f8f;
+  color: white;
+}
+
+button.secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+button.danger {
+  background: #dc2626;
+  color: white;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Tâches */
+.task-list {
+  margin-top: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f3f4f6;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.task:last-child {
+  border-bottom: none;
+}
+
+.task input[type="checkbox"] {
+  margin: 0 4px 0 0;
+}
+
+.task-title {
+  flex: 1;
+}
+
+.task.done .task-title {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.task small {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+/* Priorités */
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+}
+
+.priority-Urgent {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.priority-Important {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.priority-Normal {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.priority-Faible {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+/* Journal */
+.journal-list {
+  margin-top: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+  font-size: 13px;
+}
+
+.journal-entry {
+  border-left: 3px solid #1f4f8f;
+  padding: 4px 8px;
+  background: #f9fafb;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.journal-entry time {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 2px;
+}
+
+/* Toolbars */
+.toolbar,
+.mail-toolbar,
+.timer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  justify-content: space-between;
+}
+
+.checkbox-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+/* Mail preview */
+#mailPreview {
+  width: 100%;
+  min-height: 180px;
+  font-family: monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  margin-top: 6px;
+}
+
+/* Chrono */
+.timer-settings {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.timer-settings label {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.timer-display {
+  margin-top: 10px;
+  font-size: 32px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.timer-actions {
+  justify-content: center;
+  margin-top: 10px;
+}
